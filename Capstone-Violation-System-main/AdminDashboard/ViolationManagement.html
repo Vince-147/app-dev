@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violation Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="AdminCSS/ViolationManagement.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Side Bar Section -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <a href="AdminDashboard.html" class="logo-link">
+                    <img src="/Photos/central.png" alt="Central Logo" class="sidebar-logo full-logo">
+                    <img src="/Photos/Central Icon.png" alt="Central Icon" class="sidebar-logo icon-logo d-none">
+                </a>
+                <button class="close-btn" id="closeSidebar"><i class="bi bi-list"></i></button>
+            </div>
+            <nav class="nav flex-column mt-3 flex-grow-1">
+                <a class="nav-link active" href="AdminDashboard.html"><i class="bi bi-columns-gap"></i> <span>Dashboard</span></a>
+                <a class="nav-link" href="ViolationManagement.html"><i class="bi bi-person-exclamation"></i> <span>Violation Management</span></a>
+                <a class="nav-link" href="IncidentReport.html"><i class='bx bxs-report'></i> <span>Incident Report</span></a>
+                <a class="nav-link" href="ViolationRecords.html"><i class="bi bi-people"></i> <span>Violation Record</span></a>
+                <a class="nav-link" href="#"><i class="bi bi-clipboard-data-fill"></i> <span>Reports and Analytics</span></a>
+                <a class="nav-link" href="StudentHanbook.html"><i class="bi bi-book-half"></i> <span>Student Handbook</span></a>
+            </nav>
+            <div class="logout-container">
+                <a class="logout-link" href="#"><i class="bi bi-box-arrow-left"></i> <span>Log Out</span></a>
+            </div>
+        </div>
+        <div class="dashboard-content w-100">
+            <div class="d-flex align-items-center">
+                <button class="toggle-btn" id="toggleSidebar"><i class="bi bi-list"></i></button>
+                <h3 class="mb-0">Violation Management</h3>
+                <input type="text" class="form-control ms-auto w-25 w-md-50 w-sm-75" id="searchInput" placeholder="Search">
+            </div>
+
+            <!-- Violation Management Section -->
+            <div class="container container-custom mt-4">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card card-custom mt-3 p-4">
+                            <div class="d-flex flex-column flex-md-row align-items-center gap-3">
+                                <img src="/Photos/UserPic.jpg" class="profile-img" alt="Profile Picture">
+                                <div class="studentinfo w-100">
+                                    <input type="text" class="form-control mb-2" placeholder="Student No." readonly>
+                                    <input type="text" class="form-control mb-2" placeholder="Student Name" readonly>
+                                    <input type="text" class="form-control mb-2" placeholder="Course and Section" readonly>
+                                    <input type="email" class="form-control mb-2" placeholder="Student School Email" readonly>
+                                </div>
+                            </div>
+                            <div class="createviolation mt-1">
+                                <button class="btn create-violation-btn" data-bs-toggle="modal" data-bs-target="#violationModal">+ Create Violation</button>
+                            </div>
+                        </div>
+
+                        <div class="recent-violation">
+                            <h5 class="mt-4 pb-2">Recent Violations</h5>
+                            <div class="violation-card">
+                                <div class="top-content">
+                                    <p>Today - Monday, March 17, 2025</p>
+                                    <p class="cheating-text fw-bold fs-5">Cheating</p>
+                                </div>
+                                <p class="bottom-content">12:45 PM</p>
+                            </div>
+                            
+                            <div class="violation-card">
+                                <div class="top-content">
+                                    <p>Today - Monday, March 17, 2025</p>
+                                    <p class="cheating-text fw-bold fs-5">Cheating</p>
+                                </div>
+                                <p class="bottom-content">12:45 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student List Section -->
+                    <div class="col-lg-4">
+                        <div class="card card-custom p-3 mt-3">
+                            <input type="text" class="form-control mb-3" placeholder="Search Student">
+                            <div class="student-list">
+                                <div class="student-item">
+                                    <div class="d-flex align-items-center">
+                                        <img src="/Photos/UserPic.jpg" alt="Student">
+                                        <div class="ms-2">
+                                            <p class="mb-0 fw-bold">Student No.</p>
+                                            <small>02000811299</small>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-sm">View</button>
+                                </div>
+                                <div class="student-item">
+                                    <div class="d-flex align-items-center">
+                                        <img src="/Photos/UserPic.jpg" alt="Student">
+                                        <div class="ms-2">
+                                            <p class="mb-0 fw-bold">Student No.</p>
+                                            <small>02000811299</small>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-sm">View</button>
+                                </div>
+                                <!-- Add Student Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Violation Process Form Modal -->
+    <div class="modal fade" id="violationModal" tabindex="-1" aria-labelledby="violationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="background-color: #2c698d; color: white; padding: 20px; border-radius: 10px;">
+                <div class="modal-header border-0">
+                    <h4 class="modal-title fw-bold" id="violationModalLabel">Violation Process</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-bs-theme="dark"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="fw-bold mb-1">Reason/s for Referral</label>
+                    <!-- Violation Dropdown Section -->
+                    <div class="dropdown" id="dropdown1">
+                        <div class="dropdown-toggle" onclick="toggleDropdown('dropdown1')">
+                            <div class="selected-items" id="selected-items1">Select options: </div>
+                            <span class="icon">▼</span>
+                        </div>
+                        <div class="dropdown-menu" id="menu1">
+                            <input type="text" name="" id="search1" class="search-box" onkeyup="filterOptions('menu1')" placeholder="Search">
+                            <label><input type="checkbox" name="" id="" value="Improper Uniform"> Improper Uniform</label>
+                            <label><input type="checkbox" name="" id="" value="Cheating"> Cheating</label>
+                            <label><input type="checkbox" name="" id="" value="Loitering and disruption of classes"> Loitering and disruption of classes</label>
+                            <label><input type="checkbox" name="" id="" value="Excessive Tardiness (3)"> Excessive Tardiness (3)</label>
+                            <label><input type="checkbox" name="" id="" value="Gambling"> Gambling</label>
+                            <label><input type="checkbox" name="" id="" value="Bullying"> Bullying</label>
+                            <label><input type="checkbox" name="" id="" value="Discourtesy or Disrespect"> Discourtesy or Disrespect</label>
+                            <label><input type="checkbox" name="" id="" value="Stealing/Tampering or Forgery of school records"> Stealing/Tampering or Forgery of school records</label>
+                            <label><input type="checkbox" name="" id="" value="Improper Use of School Facilities/Equipment"> Improper Use of School Facilities/Equipment</label>
+                            <label><input type="checkbox" name="" id="" value="Usage of Electronic Mobile Phone during class"> Usage of Electronic Mobile Phone during class</label>
+                            <label><input type="checkbox" name="" id="" value="Bringing/Usage of prohibited items inside the campus"> Bringing/Usage of prohibited items inside the campus</label>
+                            <label><input type="checkbox" name="" id="" value="Public Display of Affection/Lascivious acts"> Public Display of Affection/Lascivious acts</label>
+                        </div>
+                    </div>
+                    <!-- End of Dropdown Section -->
+
+                    <label class="fw-bold mt-2">Details</label>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.</p>
+
+                    <div class="Severity mb-3">
+                        <label class="fw-bold">Severity of Offense:<span class="fw-medium text-decoration-underline"> Minor</span></label>
+                    </div>
+                    
+                
+                    <!-- Referral Dropdown Section -->
+                    <label class="fw-bold mb-1">Action Taken Prior to Referral</label>
+                    <select class="form-select" aria-label="Default select example" aria-placeholder="Select penalty...">
+                        <option selected hidden>Select penalty...</option>
+                        <option value="Verbal/Oral Warning">Verbal Reprimand</option>
+                        <option value="Community Service">Held conference with the student</option>
+                        <option value="Suspension">Consulted DO/GA</option>
+                        <option value="Expulsion">Contacted Parents</option>
+                        <option value="Expulsion">Changed Seat</option>
+                        <option value="Expulsion">Held Conference with the Parent</option>
+                      </select>
+                    <!-- End of Dropdown Section -->
+
+                    <!-- Penalty Dropdown Section -->
+                    <label class="fw-bold mt-2">Penalty</label>
+                    <select class="form-select" aria-label="Default select example" aria-placeholder="Select penalty...">
+                        <option selected hidden>Select penalty...</option>
+                        <option value="Verbal/Oral Warning">Verbal/Oral Warning</option>
+                        <option value="Community Service">Community Service</option>
+                        <option value="Suspension">Suspension</option>
+                        <option value="Expulsion">Expulsion</option>
+                      </select>
+                    <!-- End of Dropdown Section -->
+
+                    <div class="d-flex justify-content-between mt-3">
+                        <div>
+                            <label class="fw-bold">Faculty Involvement?</label><br>
+                            <div>
+                                <input type="radio" name="faculty" value="yes" id="facultyYes">
+                                <label for="facultyYes">Yes</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="faculty" value="no" id="facultyNo">
+                                <label for="facultyNo">No</label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="fw-bold">Counseling Required?</label><br>
+                            <div>
+                                <input type="radio" name="counseling" value="yes" id="counselingYes">
+                                <label for="counselingYes">Yes</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="counseling" value="no" id="counselingNo">
+                                <label for="counselingNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <label class="fw-bold mt-2">Others</label>
+                    <input type="text" name="" id="" class="form-control mb-3 mt-1" placeholder="Please specify...">
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between">
+                    <button class="btn upload-btn" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                        <i class="bi bi-upload"></i> Upload Evidence
+                    </button>
+                    <button class="btn submit-btn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal Form -->
+    <div class="modal fade upload-modal" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-light" id="uploadModalLabel">Upload File</h5>
+                    <button type="button" class="btn-close custom-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="upload-box" id="dropZone">
+                        <input type="file" name="" id="fileInput" class="d-none" multiple>
+                        <img src="https://via.placeholder.com/50" alt="Upload Icon" class="mb-2">
+                        <p class="m-0">Drag file here,<br>or <span class="text-primary" id="browseText">click to browse</span></p>
+                    </div>
+                    <p id="fileName" class="file-info text-center mt-2"></p>
+                    <div class="modal-footer border-0 d-flex justify-content-center">
+                        <button id="saveButton" class="btn">Save</button>
+                    </div>
+                    <p class="text-light text-center">Supported formats: PNG, JPG, PDF</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Student Misconduct Modal -->
+    <div class="modal fade" id="misconductModal" tabindex="-1" aria-labelledby="misconductModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-light fw-bold" id="misconductModalLabel">Student Misconduct</h5>
+                    <span class="badge bg-success resolved-badge">Resolved</span>
+                </div>
+                <div class="modal-body">
+                    <div class="misconduct-details">
+                        <p><strong>Name of Student:</strong> <span>Mark Jecil Bausa</span></p>
+                        <p><strong>Course & Section:</strong> <span>BSIT 611</span></p>
+                        <p><strong>Violation/s Committed:</strong> <span>Cheating</span></p>
+                        <p><strong>Severity of Offense/s:</strong> <span>Minor Offense</span></p>
+                        <p><strong>Action Taken Prior to Referral:</strong> <span>Consulted DO/GA</span></p>
+                        <p><strong>Penalty of Student:</strong> <span>Verbal/Oral Warning</span></p>
+                        <p><strong>Counseling Status:</strong> <span class="text-success fw-bold">Finished</span></p>
+                        <p><strong>Involved Faculty:</strong> <span>None</span></p>
+                        <p><strong>Detail:</strong> <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</span></p>
+                    </div>
+                    <div class="evidence-section mt-3">
+                        <h6 class="fw-bold">Evidence</h6>
+                        <div class="evidence-box mt-2 p-3 text-center">
+                            N/A
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="AdminJS/Violationmanagement.js"></script>
+
+</body>
+</html>

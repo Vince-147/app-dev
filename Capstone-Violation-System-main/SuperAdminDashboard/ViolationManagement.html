@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Violation Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="SuperAdminCSS/ViolationManagement.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <a href="Authorization.html" class="logo-link">
+                    <img src="/Photos/central.png" alt="Central Logo" class="sidebar-logo full-logo">
+                    <img src="/Photos/Central Icon.png" alt="Central Icon" class="sidebar-logo icon-logo d-none">
+                </a>
+                <button class="close-btn" id="closeSidebar"><i class="bi bi-list"></i></button>
+            </div>
+            <nav class="nav flex-column mt-3 flex-grow-1">
+                <a class="nav-link" href="Authorization.html"><i class="bi bi-shield-exclamation"></i> <span>Authorization</span></a>
+
+                <!-- Accordion Violation Management -->
+                <div class="accordion violation-accordion" id="violationAccordion">
+                    <div class="accordion-item border-0 bg-transparent">
+                        <h2 class="accordion-header" id="headingViolation">
+                            <button class="accordion-button collapsed violation-toggle nav-link active" type="button" data-bs-toggle="collapse" data-bs-target="#collapseViolation" aria-expanded="false" aria-controls="collapseViolation">
+                                <i class="bi bi-person-exclamation"></i>
+                                <span class="flex-grow-1" style="font-weight: 400;">Violation Management</span>
+                            </button>
+                        </h2>
+                        <div id="collapseViolation" class="accordion-collapse collapse show" aria-labelledby="headingViolation" data-bs-parent="#violationAccordion">
+                            <div class="accordion-body p-0">
+                                <a class="nav-link sub-link active" href="#" data-section="violation-type"><i class="bi bi-exclamation-triangle me-2"></i><small>Violation Type</small></a>
+                                <a class="nav-link sub-link" href="#" data-section="referral"><i class="bi bi-arrow-right-circle me-2"></i><small>Referral</small></a>
+                                <a class="nav-link sub-link" href="#" data-section="penalty"><i class="bi bi-hammer me-2"></i><small>Penalty</small></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Accordion -->
+
+                <a class="nav-link" href="RuleManagement.html"><i class="bi bi-journal-text"></i> <span>Rule Management</span></a>
+                <a class="nav-link" href="#"><i class="bi bi-clipboard-data-fill"></i> <span>Reports and Analytics</span></a>
+                <a class="nav-link" href="#"><i class="bi bi-book-half"></i> <span>Student Handbook</span></a>
+            </nav>
+            <div class="logout-container">
+                <a class="logout-link" href="#"><i class="bi bi-box-arrow-left"></i> <span>Log Out</span></a>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content w-100">
+            <div class="d-flex align-items-center">
+                <button class="toggle-btn" id="toggleSidebar"><i class="bi bi-list"></i></button>
+                <h3 class="mb-0">Violation Management</h3>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="container mt-4">
+                <!-- Violation Type Section -->
+                <div class="content-section active" id="violation-type-section">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4>Violation Type</h4>
+                        <button class="btn btn-add px-4 py-2" id="addViolationBtn">+ Add</button>
+                    </div>
+                    <div class="card-table bg-white">
+                        <table id="violationTable" class="table table-striped table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Violation ID</th>
+                                    <th>Type of Violation</th>
+                                    <th class="text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Loitering and disruption of classes</td>
+                                    <td class="text-end">
+                                        <button class="btn btn-outline-secondary btn-sm btn-action">Archive</button> 
+                                        <button class="btn btn-outline-secondary btn-sm btn-action">Edit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Referral Section -->
+                <div class="content-section" id="referral-section">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4>Referrals</h4>
+                        <button class="btn btn-add px-4 py-2" id="addReferralBtn">+ Add</button>
+                    </div>
+                    <div class="card-table bg-white">
+                        <table id="referralTable" class="table table-striped table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Referral ID</th>
+                                    <th>Action Taken Prior to Referral</th>
+                                    <th class="text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Verbal Reprimand</td>
+                                    <td class="text-end">
+                                        <button class="btn btn-outline-secondary btn-sm btn-action">Archive</button> 
+                                        <button class="btn btn-outline-secondary btn-sm btn-action">Edit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Penalty Section -->
+                <div class="content-section" id="penalty-section">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4>Penalty</h4>
+                        <button class="btn btn-add px-4 py-2" id="addPenaltyBtn">+ Add</button>
+                    </div>
+                    <div class="card-table bg-white">
+                        <table id="penaltyTable" class="table table-striped table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Penalty ID</th>
+                                    <th>Penalty Taken</th>
+                                    <th class="text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Verbal/Oral Warning</td>
+                                    <td class="text-end">
+                                        <button class="btn btn-outline-secondary btn-sm btn-action">Archive</button> 
+                                        <button class="btn btn-outline-secondary btn-sm btn-action">Edit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Violation Type Modal -->
+    <div class="modal fade" id="violationtype-modal" tabindex="-1" aria-labelledby="#" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Add Violation</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="violationName" class="form-label">Violation Name</label>
+                            <input type="text" name="" class="form-control" id="violationName" placeholder="Enter violation name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="violationDetail" class="form-label">Violation Details</label>
+                            <textarea class="form-control" name="" id="violationDetail" rows="4" placeholder="Describe the violation..."></textarea>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary add-btn">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Referral Modal -->
+    <div class="modal fade" id="referral-modal" tabindex="-1" aria-labelledby="#" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Add Referral</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="referralName" class="form-label">Prior Taken to Referral</label>
+                            <input type="text" name="" class="form-control" id="referralName" placeholder="Enter referral name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="referralDetail" class="form-label">Detail of Referral</label>
+                            <textarea class="form-control" name="" id="referralDetail" rows="4" placeholder="Describe the referral..."></textarea>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary add-btn">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Penalty Modal -->
+    <div class="modal fade" id="penalty-modal" tabindex="-1" aria-labelledby="penalty-modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Add Penalty</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="penaltyName" class="form-label">Penalty Name</label>
+                            <input type="text" name="" class="form-control" id="penaltyName" placeholder="Enter penalty name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="penaltyDetail" class="form-label">Detail of Penalty</label>
+                            <textarea class="form-control" name="" id="penaltyDetail" rows="4" placeholder="Describe the penalty..."></textarea>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary add-btn">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Archive Confirmation Modal -->
+    <div class="modal fade" id="archiveConfirmModal" tabindex="-1" aria-labelledby="archiveModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-3">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <img src="https://img.icons8.com/color/48/000000/error--v1.png" alt="Warning" style="width: 50px;">
+                    </div>
+                    <h5 class="fw-bold">Archive content</h5>
+                    <p class="mb-4 text-muted">Are you sure you want to archive this content?<br>This action cannot be undone.</p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <button class="btn btn-secondary px-4" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger px-4" id="confirmArchiveBtn">Archive</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="SuperAdminJS/ViolationManagement.js"></script>
+</body>
+</html>
